@@ -14,7 +14,7 @@ const Router = () => {
                     <Login nome={nome} setNome={setNome} saldo={saldo} setSaldo={setSaldo} />
                 </Route>
                 <Route path="/feira"> 
-                    <Feira />
+                    <Feira nome={nome} setNome={setNome} saldo={saldo} setSaldo={setSaldo} />
                 </Route>
                 <Route path="/carrinho"> 
                     <Carrinho />
