@@ -2,9 +2,12 @@ import { Button, Input, InputLabel, InputAdornment } from '@material-ui/core';
 import { Container, Titulo, InputContainer } from './styles';
 
 import { useHistory } from 'react-router-dom';
+import { UsuarioContext } from '../../common/context/Usuario';
+import { useContext } from 'react';
 
-function Login({ nome, saldo, setNome, setSaldo }) {
+function Login() {
   const history = useHistory();
+  const { nome, saldo, setNome, setSaldo } = useContext(UsuarioContext);
   return (
     <Container>
       <Titulo>Insira o seu nome</Titulo>
