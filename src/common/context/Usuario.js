@@ -2,6 +2,8 @@ import { createContext, useState } from 'react';
 
 export const UsuarioContext = createContext();
 
+UsuarioContext.displayName = 'UsuárioContexto';
+
 export const UsuarioProvider = ({ children }) => {
   const [nome, setNome] = useState('');
   const [saldo, setSaldo] = useState(0);
