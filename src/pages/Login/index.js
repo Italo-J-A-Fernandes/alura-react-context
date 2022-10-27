@@ -3,43 +3,39 @@ import { Container, Titulo, InputContainer } from './styles';
 
 import { useHistory } from 'react-router-dom';
 import { UsuarioContext } from '../../common/context/Usuario';
+import { useContext } from 'react';
 
 function Login() {
   const history = useHistory();
+  const { nome, saldo, setNome, setSaldo } = useContext(UsuarioContext);
   return (
-    <UsuarioContext.Consumer>
-      {({ nome, saldo, setNome, setSaldo }) => (
-        <Container>
-          <Titulo>Insira o seu nome</Titulo>
-          <InputContainer>
-            <InputLabel>Nome</InputLabel>
-            <Input
-              value={nome}
-              onChange={(e) => setNome(e.target.value)}
-              type="text"
-            />
-          </InputContainer>
-          <InputContainer>
-            <InputLabel>Saldo</InputLabel>
-            <Input
-              type="number"
-              startAdornment={
-                <InputAdornment position="start">R$</InputAdornment>
-              }
-              value={saldo}
-              onChange={(e) => setSaldo(e.target.value)}
-            />
-          </InputContainer>
-          <Button
-            variant="contained"
-            color="primary"
-            onClick={() => history.push('/feira')}
-          >
-            Avançar
-          </Button>
-        </Container>
-      )}
-    </UsuarioContext.Consumer>
+    <Container>
+      <Titulo>Insira o seu nome</Titulo>
+      <InputContainer>
+        <InputLabel>Nome</InputLabel>
+        <Input
+          value={nome}
+          onChange={(e) => setNome(e.target.value)}
+          type="text"
+        />
+      </InputContainer>
+      <InputContainer>
+        <InputLabel>Saldo</InputLabel>
+        <Input
+          type="number"
+          startAdornment={<InputAdornment position="start">R$</InputAdornment>}
+          value={saldo}
+          onChange={(e) => setSaldo(e.target.value)}
+        />
+      </InputContainer>
+      <Button
+        variant="contained"
+        color="primary"
+        onClick={() => history.push('/feira')}
+      >
+        Avançar
+      </Button>
+    </Container>
   );
 }
 
