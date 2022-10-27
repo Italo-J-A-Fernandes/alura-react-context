@@ -3,6 +3,7 @@ import Login from './pages/Login';
 import Carrinho from './pages/Carrinho';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import { UsuarioProvider } from './common/context/Usuario';
+import { CarrinhoProvider } from './common/context/Carrinho';
 
 const Router = () => {
   return (
@@ -12,9 +13,11 @@ const Router = () => {
           <Route exact path="/">
             <Login />
           </Route>
-          <Route path="/feira">
-            <Feira />
-          </Route>
+          <CarrinhoProvider>
+            <Route path="/feira">
+              <Feira />
+            </Route>
+          </CarrinhoProvider>
         </UsuarioProvider>
         <Route path="/carrinho">
           <Carrinho />
