@@ -29,6 +29,7 @@ module.exports = {
     'react/react-in-jsx-scope': 'off',
     'react/self-closing-comp': 'warn',
     'react/jsx-uses-vars': 'error',
+    'no-unused-vars': 'off',
   },
   settings: {
     react: {
