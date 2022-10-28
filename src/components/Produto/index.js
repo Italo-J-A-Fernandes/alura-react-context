@@ -1,28 +1,15 @@
 import { Container } from './styles';
-import { memo, useContext } from 'react';
+import { memo } from 'react';
 import { IconButton } from '@material-ui/core';
 import AddIcon from '@material-ui/icons/Add';
 import RemoveIcon from '@material-ui/icons/Remove';
-import { CarrinhoContext } from '../../common/context/Carrinho';
+import { useCarrinhoContext } from '../../common/context/Carrinho';
 
 function Produto({ nome, foto, valor, id }) {
-  const { carrinho, setCarrinho } = useContext(CarrinhoContext);
-
-  const addProduto = (produto) => {
-    const temNoCarrinho = carrinho.some(
-      (itemCarrinho) => itemCarrinho.id === produto.id
-    );
-    if (!temNoCarrinho) {
-      produto.quantidade = 1;
-      return setCarrinho(() => [...carrinho, produto]);
-    }
-    setCarrinho(() =>
-      carrinho.map((itemCarrinho) => {
-        if (itemCarrinho.id === produto.id) itemCarrinho.quantidade += 1;
-        return itemCarrinho;
-      })
-    );
-  };
+  const { carrinho, addProduto } = useCarrinhoContext();
+  const produtoNoCarrinho = carrinho.find(
+    (itemDoCarrinho) => itemDoCarrinho.id === id
+  );
 
   return (
     <Container>
@@ -36,6 +23,7 @@ function Produto({ nome, foto, valor, id }) {
         <IconButton color="secondary">
           <RemoveIcon />
         </IconButton>
+        {produtoNoCarrinho?.quantidade ?? 0}
         <IconButton onClick={() => addProduto({ nome, foto, valor, id })}>
           <AddIcon />
         </IconButton>
