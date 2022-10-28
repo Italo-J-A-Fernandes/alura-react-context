@@ -7,6 +7,7 @@ module.exports = {
   },
   extends: [
     'eslint:recommended',
+    'plugin:react/jsx-runtime',
     'plugin:import/errors',
     'plugin:react/recommended',
     'plugin:jsx-a11y/recommended',
@@ -27,6 +28,8 @@ module.exports = {
     'react/jsx-uses-react': 'off',
     'react/react-in-jsx-scope': 'off',
     'react/self-closing-comp': 'warn',
+    'react/jsx-uses-vars': 'error',
+    'no-unused-vars': 'off',
   },
   settings: {
     react: {
