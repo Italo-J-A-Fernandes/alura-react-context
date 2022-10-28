@@ -8,6 +8,22 @@ import { CarrinhoContext } from '../../common/context/Carrinho';
 function Produto({ nome, foto, valor, id }) {
   const { carrinho, setCarrinho } = useContext(CarrinhoContext);
 
+  const addProduto = (produto) => {
+    const temNoCarrinho = carrinho.some(
+      (itemCarrinho) => itemCarrinho.id === produto.id
+    );
+    if (!temNoCarrinho) {
+      produto.quantidade = 1;
+      return setCarrinho(() => [...carrinho, produto]);
+    }
+    setCarrinho(() =>
+      carrinho.map((itemCarrinho) => {
+        if (itemCarrinho.id === produto.id) itemCarrinho.quantidade += 1;
+        return itemCarrinho;
+      })
+    );
+  };
+
   return (
     <Container>
       <div>
@@ -20,11 +36,7 @@ function Produto({ nome, foto, valor, id }) {
         <IconButton color="secondary">
           <RemoveIcon />
         </IconButton>
-        <IconButton
-          onClick={() =>
-            setCarrinho(() => [...carrinho, { nome, foto, valor, id }])
-          }
-        >
+        <IconButton onClick={() => addProduto({ nome, foto, valor, id })}>
           <AddIcon />
         </IconButton>
       </div>
