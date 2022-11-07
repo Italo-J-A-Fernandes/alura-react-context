@@ -45,6 +45,14 @@ export const useCarrinhoContext = () => {
         carrinhoAnterior.filter((itemDoCarrinhho) => itemDoCarrinhho.id !== id)
       );
     }
+    setCarrinho((carrinhoAnterior) =>
+      carrinhoAnterior.mao((itemDoCarrinhho) => {
+        if (itemDoCarrinhho.id === id) {
+          itemDoCarrinhho.quantidade -= 1;
+        }
+        return itemDoCarrinhho;
+      })
+    );
   };
 
   return {
