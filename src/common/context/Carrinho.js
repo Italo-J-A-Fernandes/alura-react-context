@@ -42,7 +42,7 @@ export const useCarrinhoContext = () => {
     const produto = carrinho.find(
       (itemDoCarrinhho) => itemDoCarrinhho.id === id
     );
-    const ehOUltimo = produto.quantidade === 1;
+    const ehOUltimo = produto && produto.quantidade === 1;
 
     if (ehOUltimo) {
       return setCarrinho((carrinhoAnterior) =>
