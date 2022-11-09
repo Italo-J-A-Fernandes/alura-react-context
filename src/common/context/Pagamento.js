@@ -1,7 +1,7 @@
 import { createContext, useState } from 'react';
 
-export const PagamentoContexto = createContext();
-PagamentoContexto.displayName = 'Pagamento';
+export const PagamentoContext = createContext();
+PagamentoContext.displayName = 'Pagamento';
 
 export const PagamentoProvider = ({ children }) => {
   const tiposPagamento = [
@@ -26,12 +26,12 @@ export const PagamentoProvider = ({ children }) => {
       id: 4,
     },
   ];
-  const [formasPagamento, setFormasPagamento] = useState(tiposPagamento[0]);
+  const [formaPagamento, setFormaPagamento] = useState(tiposPagamento[0]);
   return (
-    <PagamentoContexto.Provider
-      value={{ tiposPagamento, formasPagamento, setFormasPagamento }}
+    <PagamentoContext.Provider
+      value={{ tiposPagamento, formaPagamento, setFormaPagamento }}
     >
       {children}
-    </PagamentoContexto.Provider>
+    </PagamentoContext.Provider>
   );
 };
