@@ -8,10 +8,18 @@ CarrinhoContext.displayName = 'Carrinho';
 export const CarrinhoProvider = ({ children }) => {
   const [carrinho, setCarrinho] = useState([]);
   const [quantidadeProduto, setQuantidadeProduto] = useState(0);
+  const [valorTotalCarrinho, setValorTotalCarrinho] = useState(0);
 
   return (
     <CarrinhoContext.Provider
-      value={{ carrinho, quantidadeProduto, setCarrinho, setQuantidadeProduto }}
+      value={{
+        carrinho,
+        quantidadeProduto,
+        valorTotalCarrinho,
+        setCarrinho,
+        setQuantidadeProduto,
+        setValorTotalCarrinho,
+      }}
     >
       {children}
     </CarrinhoContext.Provider>
@@ -19,8 +27,14 @@ export const CarrinhoProvider = ({ children }) => {
 };
 
 export const useCarrinhoContext = () => {
-  const { carrinho, quantidadeProduto, setCarrinho, setQuantidadeProduto } =
-    useContext(CarrinhoContext);
+  const {
+    carrinho,
+    quantidadeProduto,
+    valorTotalCarrinho,
+    setCarrinho,
+    setQuantidadeProduto,
+    setValorTotalCarrinho,
+  } = useContext(CarrinhoContext);
 
   const mudarQuantidade = (id, quantidade) => {
     return carrinho.map((itemDoCarrinhho) => {
@@ -57,12 +71,19 @@ export const useCarrinhoContext = () => {
   };
 
   useEffect(() => {
-    const novaQuantidade = carrinho.reduce(
-      (contador, produto) => contador + produto.quantidade,
-      0
+    const { novoTotal, novaQuantidade } = carrinho.reduce(
+      (contador, produto) => ({
+        novaQuantidade: contador.novaQuantidade + produto.quantidade,
+        novoTotal: contador.novoTotal + produto.valor * produto.quantidade,
+      }),
+      {
+        novaQuantidade: 0,
+        novoTotal: 0,
+      }
     );
     setQuantidadeProduto(novaQuantidade);
-  }, [carrinho, setQuantidadeProduto]);
+    setValorTotalCarrinho(novoTotal);
+  }, [carrinho, setQuantidadeProduto, setValorTotalCarrinho]);
 
   return {
     carrinho,
@@ -70,6 +91,7 @@ export const useCarrinhoContext = () => {
     addProduto,
     removerProduto,
     quantidadeProduto,
+    valorTotalCarrinho,
     setQuantidadeProduto,
   };
 };
