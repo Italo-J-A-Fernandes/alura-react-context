@@ -54,7 +54,7 @@ function Carrinho() {
         </div>
         <div>
           <h2> Saldo: </h2>
-          <span> R$ {saldo ? saldo.toFixed(2) : '0.00'}</span>
+          <span> R$ {saldo.toFixed(2)}</span>
         </div>
         <div>
           <h2> Saldo Total: </h2>
@@ -67,6 +67,7 @@ function Carrinho() {
         }}
         color="primary"
         variant="contained"
+        disabled={total <= 0}
       >
         Comprar
       </Button>
