@@ -26,9 +26,10 @@ function Carrinho() {
     usePagamentoContext();
   const { saldo = 0 } = useContext(UsuarioContext);
   const history = useHistory();
-  const total = useMemo(() => {
-    saldo - valorTotalCarrinho;
-  }, [saldo, valorTotalCarrinho]);
+  const total = useMemo(
+    () => saldo - valorTotalCarrinho,
+    [saldo, valorTotalCarrinho]
+  );
   return (
     <Container>
       <Voltar onClick={() => history.goBack()} />
