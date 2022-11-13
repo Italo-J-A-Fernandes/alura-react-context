@@ -24,8 +24,9 @@ function Carrinho() {
   const { carrinho, valorTotalCarrinho } = useCarrinhoContext();
   const { formaPagamento, tiposPagamento, mudarFormaPagamento } =
     usePagamentoContext();
-  const { saldo } = useContext(UsuarioContext);
+  const { saldo = 0 } = useContext(UsuarioContext);
   const history = useHistory();
+  const total = saldo - valorTotalCarrinho;
   return (
     <Container>
       <Voltar onClick={() => history.goBack()} />
@@ -53,11 +54,11 @@ function Carrinho() {
         </div>
         <div>
           <h2> Saldo: </h2>
-          <span> R$ {saldo}</span>
+          <span> R$ {saldo ? saldo.toFixed(2) : '0.00'}</span>
         </div>
         <div>
           <h2> Saldo Total: </h2>
-          <span> R$ </span>
+          <span> R$ {total.toFixed(2)} </span>
         </div>
       </TotalContainer>
       <Button
