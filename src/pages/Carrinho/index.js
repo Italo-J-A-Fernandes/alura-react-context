@@ -9,7 +9,7 @@ import MuiAlert from '@material-ui/lab/Alert';
 import { useCarrinhoContext } from '../../common/context/Carrinho';
 import { usePagamentoContext } from '../../common/context/Pagamento';
 import { UsuarioContext } from '../../common/context/Usuario';
-import { useContext, useState } from 'react';
+import { useContext, useMemo, useState } from 'react';
 import {
   Container,
   Voltar,
@@ -26,7 +26,9 @@ function Carrinho() {
     usePagamentoContext();
   const { saldo = 0 } = useContext(UsuarioContext);
   const history = useHistory();
-  const total = saldo - valorTotalCarrinho;
+  const total = useMemo(() => {
+    saldo - valorTotalCarrinho;
+  }, [saldo, valorTotalCarrinho]);
   return (
     <Container>
       <Voltar onClick={() => history.goBack()} />
