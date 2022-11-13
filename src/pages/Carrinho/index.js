@@ -7,7 +7,9 @@ import {
 } from '@material-ui/core';
 import MuiAlert from '@material-ui/lab/Alert';
 import { useCarrinhoContext } from '../../common/context/Carrinho';
-import { useState } from 'react';
+import { usePagamentoContext } from '../../common/context/Pagamento';
+import { UsuarioContext } from '../../common/context/Usuario';
+import { useContext, useState } from 'react';
 import {
   Container,
   Voltar,
@@ -16,13 +18,13 @@ import {
 } from './styles';
 import Produto from '../../components/Produto';
 import { useHistory } from 'react-router-dom';
-import { usePagamentoContext } from '../../common/context/Pagamento';
 
 function Carrinho() {
   const [openSnackbar, setOpenSnackbar] = useState(false);
   const { carrinho, valorTotalCarrinho } = useCarrinhoContext();
   const { formaPagamento, tiposPagamento, mudarFormaPagamento } =
     usePagamentoContext();
+  const { saldo } = useContext(UsuarioContext);
   const history = useHistory();
   return (
     <Container>
@@ -51,7 +53,7 @@ function Carrinho() {
         </div>
         <div>
           <h2> Saldo: </h2>
-          <span> R$ </span>
+          <span> R$ {saldo}</span>
         </div>
         <div>
           <h2> Saldo Total: </h2>
