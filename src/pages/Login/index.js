@@ -25,7 +25,7 @@ function Login() {
           type="number"
           startAdornment={<InputAdornment position="start">R$</InputAdornment>}
           value={saldo}
-          onChange={(e) => setSaldo(e.target.value)}
+          onChange={(e) => setSaldo(Number(e.target.value))}
         />
       </InputContainer>
       <Button
