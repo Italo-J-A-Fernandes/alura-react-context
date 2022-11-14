@@ -12,7 +12,9 @@
 
 ## Detalhes do projeto
 
-- Aprender a criar e gerenciar estados globais com ContextAPI
+**Nesse projeto foi criado um carrinho de compras ficticio, com dados estaticos, utilizando a api de contexto do react (ContextAPI). Com o intuito de:**
+
+- Aprender a criar e gerenciar estados globais com ContextAPI - na verdade uma revisão.
 - Entender como desacoplar componentes, deixando-os com a responsabilidade apenas de renderização
 - Utilizar das melhores práticas e o máximo que essa API consegue proporcionar
 - Criar hooks customizados para poder utilizar de outros hooks React junto com o ContextAPI
