@@ -21,7 +21,7 @@ import { useHistory } from 'react-router-dom';
 
 function Carrinho() {
   const [openSnackbar, setOpenSnackbar] = useState(false);
-  const { carrinho, valorTotalCarrinho } = useCarrinhoContext();
+  const { carrinho, valorTotalCarrinho, efetuarCompra } = useCarrinhoContext();
   const { formaPagamento, tiposPagamento, mudarFormaPagamento } =
     usePagamentoContext();
   const { saldo = 0 } = useContext(UsuarioContext);
@@ -67,10 +67,11 @@ function Carrinho() {
       <Button
         onClick={() => {
           setOpenSnackbar(true);
+          efetuarCompra();
         }}
         color="primary"
         variant="contained"
-        disabled={total < 0}
+        disabled={total < 0 || !carrinho.length}
       >
         Comprar
       </Button>
