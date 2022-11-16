@@ -2,9 +2,9 @@
 ## Objetivo:
 **O principal obejtivo desse projeto é revisar o uso da ContextAPI do React atraves desse [Curso de React: gerenciamento de estados globais com ContextAPI - Alura](https://cursos.alura.com.br/course/react-context-estados-globais-contextapi).**
 
-| :placard: Vitrine.Dev | https://cursos.alura.com.br/vitrinedev/italojafernandes |
+| :placard: Vitrine.Dev | https://cursos.alura.com.br/vitrinedev/italojafernandes
 | -------------  | --- |
-| :sparkles: Nome        | **Curso de React: gerenciamento de estados globais com ContextAPI**
+| :sparkles: Nome | **Curso de React: gerenciamento de estados globais com ContextAPI**
 | :label: Tecnologias | react, styled-components, javascript, html, css
 
 <!-- Inserir imagem com a #vitrinedev ao final do link -->
