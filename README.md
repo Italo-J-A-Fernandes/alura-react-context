@@ -8,7 +8,7 @@
 | :label: Tecnologias | react, styled-components, javascript, html, css
 
 <!-- Inserir imagem com a #vitrinedev ao final do link -->
-<!-- ![](https://via.placeholder.com/1200x500.png?text=imagem+lindona+do+meu+projeto#vitrinedev) -->
+![Tela de Feira](assets/../public/assets/tela_de_feira.png?text=tela+de+feira#vitrinedev)
 
 ## Detalhes do projeto
 
