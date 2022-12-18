@@ -6,6 +6,8 @@
 | -------------  | --- |
 | :sparkles: Nome | **Curso de React: gerenciamento de estados globais com ContextAPI**
 | :label: Tecnologias | react, styled-components, javascript, html, css
+| 🔖 Status Curso | Finalizado
+| 📖 Status Pessoal | Parado
 
 <!-- Inserir imagem com a #vitrinedev ao final do link -->
 ![Tela de Feira](assets/../public/assets/tela_de_feira.png?text=tela+de+feira#vitrinedev)
